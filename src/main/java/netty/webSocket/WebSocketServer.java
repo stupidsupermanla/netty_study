@@ -33,11 +33,15 @@ public class WebSocketServer {
 
     public void run() throws InterruptedException {
         //bossGroup 用来接收进来的连接
-        EventLoopGroup bossGroup = new NioEventLoopGroup();
+        EventLoopGroup bossGroup = new NioEventLoopGroup(1);
         //workerGroup 用来处理已经被接收的连接
         EventLoopGroup workerGroup = new NioEventLoopGroup();
 
         try {
+            // 三种reactor模型：
+            // bootstrap.group(bossGroup) （线程数为1）
+            // bootstrap.group(bossGroup) （线程数大于1）
+            // bootstrap.group(bossGroup, workerGroup)
             ServerBootstrap bootstrap = new ServerBootstrap();
             bootstrap.group(bossGroup, workerGroup)
                     .channel(NioServerSocketChannel.class)

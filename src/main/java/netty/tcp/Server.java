@@ -44,8 +44,14 @@ public class Server {
                             ChannelPipeline pipeline = ch.pipeline();
 //                            pipeline.addLast(new IdleStateHandler(3,5,7, TimeUnit.SECONDS));
 //                            pipeline.addLast("d",new StringDecoder());
+                            pipeline.addLast(new TcpServerHandlerA());
+                            pipeline.addLast(new TcpServerHandlerB());
+                            pipeline.addLast(new TcpServerHandlerC());
+                            pipeline.addLast(new TcpServerHandlerD());
+                            pipeline.addLast(new TcpServerHandlerE());
+                            pipeline.addLast(new TcpServerHandlerF());
                             pipeline.addLast(new TcpServerHandler());
-//                            pipeline.addLast("e",new StringEncoder());
+                            pipeline.addLast("e",new StringEncoder());
                         }
                     });
             ChannelFuture future = bootstrap.bind(port).sync();

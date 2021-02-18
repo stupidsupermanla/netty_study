@@ -18,6 +18,7 @@ public class TcpClientHandler extends SimpleChannelInboundHandler<ByteBuf> {
 
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
+        // tcp粘包粘包时修改次数
         for (int i = 0; i < 15; i++) {
             ByteBuf byteBuf = Unpooled.copiedBuffer("hello world" + i, StandardCharsets.UTF_8);
             ctx.writeAndFlush(byteBuf);

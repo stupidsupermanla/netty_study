@@ -1,6 +1,7 @@
 package netty.tcp;
 
 import io.netty.buffer.ByteBuf;
+import io.netty.buffer.Unpooled;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
@@ -31,5 +32,7 @@ public class TcpServerHandler extends SimpleChannelInboundHandler<ByteBuf> {
         System.out.println("收到消息："+resultStr);
         System.out.println("!!!");
         // 释放资源，这行很关键
+        ByteBuf receive = Unpooled.copiedBuffer(resultStr, StandardCharsets.UTF_8);
+        ctx.writeAndFlush(receive);
     }
 }
