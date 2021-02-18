@@ -28,7 +28,7 @@ public class Server {
 
     public void run() throws InterruptedException {
         //bossGroup 用来接收进来的连接
-        EventLoopGroup bossGroup = new NioEventLoopGroup();
+        EventLoopGroup bossGroup = new NioEventLoopGroup(1);
         //workerGroup 用来处理已经被接收的连接
         EventLoopGroup workerGroup = new NioEventLoopGroup();
 
