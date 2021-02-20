@@ -34,9 +34,13 @@ public class Server {
 
         try {
             ServerBootstrap bootstrap = new ServerBootstrap();
+            // 两个reactor 线程组
             bootstrap.group(bossGroup, workerGroup)
+                    //反射创建channel
                     .channel(NioServerSocketChannel.class)
+                    // option作用于main reactor
                     .option(ChannelOption.SO_BACKLOG, 128)
+                    // childOption作用于sub reactor
                     .childOption(ChannelOption.SO_KEEPALIVE, true)
                     .childHandler(new ChannelInitializer<SocketChannel>() {
                         @Override
