@@ -1,6 +1,6 @@
-package netty.asyncDemo;
+package netty.asyncDemo.channel.future;
 
-import io.netty.util.concurrent.Future;
+import netty.asyncDemo.channel.future.MyFuture;
 
 import java.util.EventListener;
 

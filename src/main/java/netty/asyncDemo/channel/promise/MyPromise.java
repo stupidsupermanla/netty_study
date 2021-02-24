@@ -1,5 +1,7 @@
-package netty.asyncDemo;
+package netty.asyncDemo.channel.promise;
 
+
+import netty.asyncDemo.channel.future.MyFuture;
 
 /**
  * @author hudi

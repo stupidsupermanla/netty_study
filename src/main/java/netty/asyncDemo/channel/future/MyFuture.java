@@ -1,6 +1,4 @@
-package netty.asyncDemo;
-
-import io.netty.util.concurrent.Future;
+package netty.asyncDemo.channel.future;
 
 /**
  * @author hudi

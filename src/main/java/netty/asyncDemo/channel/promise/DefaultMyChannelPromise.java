@@ -1,11 +1,10 @@
-package netty.asyncDemo;
+package netty.asyncDemo.channel.promise;
 
-import io.netty.util.concurrent.Future;
-import io.netty.util.concurrent.GenericFutureListener;
+import netty.asyncDemo.channel.future.MyFutureListener;
+import netty.asyncDemo.channel.MyChannel;
+import netty.asyncDemo.channel.future.MyFuture;
 
 import java.util.concurrent.ExecutionException;
-import java.util.concurrent.Executor;
-import java.util.concurrent.ExecutorService;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 

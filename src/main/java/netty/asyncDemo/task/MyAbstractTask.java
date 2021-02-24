@@ -1,5 +1,7 @@
-package netty.asyncDemo;
+package netty.asyncDemo.task;
 
+
+import netty.asyncDemo.channel.promise.MyChannelPromise;
 
 /**
  * @author hudi

@@ -1,9 +1,6 @@
-package netty.asyncDemo;
+package netty.asyncDemo.channel.future;
 
-import io.netty.channel.Channel;
-import io.netty.channel.ChannelFuture;
-import io.netty.util.concurrent.Future;
-import io.netty.util.concurrent.GenericFutureListener;
+import netty.asyncDemo.channel.MyChannel;
 
 /**
  * @author hudi

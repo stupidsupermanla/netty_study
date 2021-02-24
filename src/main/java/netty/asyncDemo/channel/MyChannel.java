@@ -1,6 +1,11 @@
-package netty.asyncDemo;
+package netty.asyncDemo.channel;
 
 import lombok.SneakyThrows;
+import netty.asyncDemo.channel.promise.DefaultMyChannelPromise;
+import netty.asyncDemo.channel.future.MyChannelFuture;
+import netty.asyncDemo.channel.promise.MyChannelPromise;
+import netty.asyncDemo.task.MyAbstractTask;
+import netty.asyncDemo.task.MyTask;
 
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
