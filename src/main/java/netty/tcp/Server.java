@@ -55,14 +55,13 @@ public class Server {
                             pipeline.addLast(new TcpServerHandlerE());
                             pipeline.addLast(new TcpServerHandlerF());
                             pipeline.addLast(new TcpServerHandler());
-                            pipeline.addLast("e",new StringEncoder());
+                            // pipeline.addLast("e",new StringEncoder());
                         }
                     });
             ChannelFuture future = bootstrap.bind(port).sync();
-            future.addListener((ChannelFutureListener) f -> {
-                System.out.println("启动成功！！！");
-            });
-            future.channel().closeFuture().sync();
+            future.addListener((ChannelFutureListener) f -> System.out.println("启动成功！！！"));
+            ChannelFuture close = future.channel().closeFuture().sync();
+            close.addListener(f-> System.out.println("netty 关闭！！！"));
         } finally {
             bossGroup.shutdownGracefully();
             workerGroup.shutdownGracefully();
