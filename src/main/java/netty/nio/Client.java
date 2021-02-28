@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.nio.ByteBuffer;
 import java.nio.channels.SocketChannel;
+import java.util.Scanner;
 
 /**
  * @Description
@@ -21,9 +22,14 @@ public class Client {
                 System.out.println("连接中。。。");
             }
         }
-        ByteBuffer byteBuffer = ByteBuffer.wrap("hello,hudi".getBytes());
-        socketChannel.write(byteBuffer);
-        System.in.read();
+//        ByteBuffer byteBuffer = ByteBuffer.wrap("hello,hudi".getBytes());
+//        socketChannel.write(byteBuffer);
+        Scanner scanner = new Scanner(System.in);
+        while (scanner.hasNextLine()) {
+            String s = scanner.nextLine();
+            ByteBuffer byteBuf = ByteBuffer.wrap(s.getBytes());
+            socketChannel.write(byteBuf);
+        }
 
     }
 }

@@ -16,10 +16,15 @@ import java.util.Iterator;
 public class Server {
 
     public static void main(String[] args) throws IOException {
+        // 开启一个ServerSocketChannel
         ServerSocketChannel serverSocketChannel=ServerSocketChannel.open();
+        // 设置为非阻塞IO
         serverSocketChannel.configureBlocking(false);
+        // 绑定端口
         serverSocketChannel.bind(new InetSocketAddress(6666));
+        // 开启一个Selector
         Selector selector=Selector.open();
+        // 注册channel到Selector上，绑定accept事件
         serverSocketChannel.register(selector, SelectionKey.OP_ACCEPT);
         while (true) {
             if (selector.select(1000) == 0) {
@@ -31,6 +36,7 @@ public class Server {
                 if (selectionKey.isAcceptable()) {
                     SocketChannel socketChannel = serverSocketChannel.accept();
                     socketChannel.configureBlocking(false);
+                    // 注册channel到Selector上，绑定read事件
                     socketChannel.register(selector,SelectionKey.OP_READ,ByteBuffer.allocate(1024));
                 }
                 if (selectionKey.isReadable()){
